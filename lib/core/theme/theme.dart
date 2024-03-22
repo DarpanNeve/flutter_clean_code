@@ -3,7 +3,7 @@ import 'package:flutter_clean_code/core/theme/app_pallete.dart';
 
 class AppTheme {
   static _border(Color color) => InputDecorationTheme(
-        contentPadding: const EdgeInsets.all(20),
+        contentPadding: const EdgeInsets.all(15),
         border: OutlineInputBorder(
           borderSide: BorderSide(color: color),
           borderRadius: const BorderRadius.all(Radius.circular(10)),
