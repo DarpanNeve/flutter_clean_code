@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_clean_code/core/routes.dart';
+import 'package:flutter_clean_code/features/auth/data/repository/auth_repository_impl.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
+import 'bloc/auth_bloc.dart';
 import 'core/theme/theme.dart';
+import 'features/auth/data/data_sources/auth_remote_data_sources.dart';
+import 'features/auth/domain/usercases/user_sign_up.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -11,7 +16,22 @@ void main() async {
   final supabase = await Supabase.initialize(
       url: dotenv.env['SUPABASE_URL']!,
       anonKey: dotenv.env['SUPABASE_ANON_KEY']!);
-  runApp(const MyApp());
+  runApp(MultiBlocProvider(
+    providers: [
+      BlocProvider(
+        create: (context) => AuthBloc(
+          userSignUp: UserSignUp(
+            AuthRepositoryImpl(
+              authRemoteDataSource: AuthRemoteDataSourceImpl(
+                supabaseClient: supabase.client,
+              ),
+            ),
+          ),
+        ),
+      ),
+    ],
+    child: const MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
