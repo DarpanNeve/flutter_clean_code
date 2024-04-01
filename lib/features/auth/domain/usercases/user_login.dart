@@ -2,8 +2,8 @@ import 'package:flutter_clean_code/core/error/failure.dart';
 import 'package:flutter_clean_code/features/auth/domain/repository/auth_repository.dart';
 import 'package:fpdart/fpdart.dart';
 
+import '../../../../core/common/entities/user.dart';
 import '../../../../core/usecases/usecase.dart';
-import '../entities/user.dart';
 
 class UserLogin implements UseCase<User, UserLoginParams> {
   final AuthRepository authRepository;

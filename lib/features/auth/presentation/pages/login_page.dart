@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_clean_code/features/auth/presentation/widgets/auth_gradient_button.dart';
 import 'package:flutter_clean_code/features/auth/presentation/widgets/auth_field.dart';
 
-import '../../../../core/common/widget.dart';
+import '../../../../core/common/widgets/loader.dart';
 import '../../../../core/util/show_snackbar.dart';
 import '../../bloc/auth_bloc.dart';
 

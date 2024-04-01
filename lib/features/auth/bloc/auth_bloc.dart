@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_clean_code/core/usecases/usecase.dart';
 import 'package:flutter_clean_code/features/auth/domain/usercases/user_sign_up.dart';
-
-import '../domain/entities/user.dart';
+import '../../../core/common/entities/user.dart';
 import '../domain/usercases/current_user.dart';
 import '../domain/usercases/user_login.dart';
 

@@ -1,7 +1,7 @@
 import 'package:flutter_clean_code/core/error/exception.dart';
 import 'package:flutter_clean_code/core/error/failure.dart';
 import 'package:fpdart/fpdart.dart';
-import '../../domain/entities/user.dart';
+import '../../../../core/common/entities/user.dart';
 import '../../domain/repository/auth_repository.dart';
 import '../data_sources/auth_remote_data_sources.dart';
 
