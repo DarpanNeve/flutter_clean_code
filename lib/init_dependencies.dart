@@ -6,6 +6,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get_it/get_it.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
+import 'core/common/cubits/app_user/app_user_cubit.dart';
 import 'features/auth/bloc/auth_bloc.dart';
 import 'features/auth/data/data_sources/auth_remote_data_sources.dart';
 import 'features/auth/data/repository/auth_repository_impl.dart';
@@ -19,6 +20,9 @@ Future<void> initDependencies() async {
     anonKey: dotenv.env['SUPABASE_ANON_KEY']!,
   );
   serviceLocator.registerLazySingleton(() => supabase.client);
+
+  //core
+  serviceLocator.registerLazySingleton(() => AppUserCubit());
 }
 
 void _initAuth() {
@@ -54,6 +58,7 @@ void _initAuth() {
     //Bloc
     ..registerLazySingleton(
       () => AuthBloc(
+        appUserCubit: serviceLocator(),
         userSignUp: serviceLocator(),
         userLogin: serviceLocator(),
         currentUser: serviceLocator(),
