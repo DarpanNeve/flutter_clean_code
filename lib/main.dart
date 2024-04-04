@@ -2,10 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_clean_code/core/routes.dart';
 import 'package:flutter_clean_code/features/auth/presentation/pages/login_page.dart';
 import 'package:flutter_clean_code/features/auth/presentation/pages/signup_page.dart';
+import 'package:flutter_config/flutter_config.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 import 'core/theme/theme.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await FlutterConfig.loadEnvVariables();
+  await Supabase.initialize(
+      url: FlutterConfig.get("SUPABASE_URL"),
+      anonKey: FlutterConfig.get("SUPABASE_ANON_KEY"));
   runApp(const MyApp());
 }
 
@@ -23,7 +30,6 @@ class MyApp extends StatelessWidget {
       darkTheme: AppTheme.darkThemeMode,
       theme: AppTheme.lightThemeMode,
       themeMode: ThemeMode.system,
-      home: const LoginPage(),
     );
   }
 }
