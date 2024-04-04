@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_clean_code/core/theme/app_pallete.dart';
 
 class AuthGradientButton extends StatelessWidget {
-  const AuthGradientButton({super.key});
+  final String buttonText;
+
+  const AuthGradientButton({super.key, required this.buttonText});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +23,10 @@ class AuthGradientButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(15),
           ),
         ),
-        child: Text("Sign Up"),
+        child: Text(
+          buttonText,
+          style: Theme.of(context).textTheme.titleMedium,
+        ),
       ),
     );
   }

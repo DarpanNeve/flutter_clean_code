@@ -1,18 +1,18 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_clean_code/features/auth/presentation/widgets/auth_gradient_button.dart';
 import 'package:flutter_clean_code/features/auth/presentation/widgets/auth_field.dart';
 
-class SignUpPage extends StatefulWidget {
-  const SignUpPage({super.key});
+class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
 
   @override
-  State<SignUpPage> createState() => _SignUpPageState();
+  State<LoginPage> createState() => _LoginPageState();
 }
 
-class _SignUpPageState extends State<SignUpPage> {
+class _LoginPageState extends State<LoginPage> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
-  final nameController = TextEditingController();
   final formKey = GlobalKey<FormState>();
 
   @override
@@ -20,7 +20,6 @@ class _SignUpPageState extends State<SignUpPage> {
     // TODO: implement dispose
     emailController.dispose();
     passwordController.dispose();
-    nameController.dispose();
     super.dispose();
   }
 
@@ -36,13 +35,8 @@ class _SignUpPageState extends State<SignUpPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Text(
-                'Sign Up',
+                'Login',
                 style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
-              ),
-              SizedBox(height: size.height * 0.03),
-              AuthField(
-                authHintText: "Name",
-                controller: nameController,
               ),
               SizedBox(height: size.height * 0.025),
               AuthField(
@@ -56,21 +50,19 @@ class _SignUpPageState extends State<SignUpPage> {
                 controller: passwordController,
               ),
               SizedBox(height: size.height * 0.025),
-              const AuthGradientButton(
-                buttonText: "Sign Up",
-              ),
+              const AuthGradientButton(buttonText: "Login"),
               SizedBox(height: size.height * 0.025),
               GestureDetector(
                 onTap: () {
-                  Navigator.pop(context);
+                  Navigator.pushNamed(context, '/signup');
                 },
                 child: RichText(
                   text: TextSpan(
-                    text: "Already have an account? ",
+                    text: "Don't have an account? ",
                     style: Theme.of(context).textTheme.titleMedium,
                     children: [
                       TextSpan(
-                        text: "Login",
+                        text: "Sign Up",
                         style:
                             Theme.of(context).textTheme.titleMedium!.copyWith(
                                   color: Theme.of(context).colorScheme.primary,

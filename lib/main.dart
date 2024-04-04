@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_clean_code/core/routes.dart';
+import 'package:flutter_clean_code/features/auth/presentation/pages/login_page.dart';
 import 'package:flutter_clean_code/features/auth/presentation/pages/signup_page.dart';
 
 import 'core/theme/theme.dart';
@@ -14,12 +16,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      initialRoute: '/login',
+      routes: routes,
       debugShowCheckedModeBanner: false,
       title: 'Blog App',
-      darkTheme:AppTheme.darkThemeMode,
+      darkTheme: AppTheme.darkThemeMode,
       theme: AppTheme.lightThemeMode,
       themeMode: ThemeMode.system,
-      home: const SignUpPage(),
+      home: const LoginPage(),
     );
   }
 }

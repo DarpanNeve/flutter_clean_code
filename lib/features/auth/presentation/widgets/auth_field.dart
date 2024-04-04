@@ -16,6 +16,7 @@ class AuthField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      obscureText: isPassword,
       controller: controller,
       decoration: InputDecoration(
         hintText: authHintText,
