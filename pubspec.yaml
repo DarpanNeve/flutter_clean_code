@@ -37,7 +37,7 @@ dependencies:
   cupertino_icons: ^1.0.6
   fpdart: ^1.1.0
   supabase_flutter: ^2.4.0
-  flutter_config: ^2.0.2
+  flutter_dotenv: ^5.1.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -54,6 +54,8 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
+  assets:
+    - .env
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
