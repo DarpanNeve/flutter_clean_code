@@ -11,11 +11,17 @@ class AppTheme {
       );
 
   static final lightThemeMode = ThemeData.light().copyWith(
+    chipTheme: const ChipThemeData(
+      side: BorderSide.none,
+    ),
     colorScheme: AppPallete.kColorScheme,
     focusColor: AppPallete.kColorScheme.primary,
     inputDecorationTheme: _border(AppPallete.kColorScheme.primary),
   );
   static final darkThemeMode = ThemeData.dark().copyWith(
+    chipTheme: const ChipThemeData(
+      side: BorderSide.none,
+    ),
     colorScheme: AppPallete.kDarkColorScheme,
     focusColor: AppPallete.kDarkColorScheme.primary,
     inputDecorationTheme: _border(AppPallete.kDarkColorScheme.primary),
