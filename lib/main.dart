@@ -46,20 +46,21 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        routes: routes,
-        debugShowCheckedModeBanner: false,
-        title: 'Blog App',
-        darkTheme: AppTheme.darkThemeMode,
-        theme: AppTheme.lightThemeMode,
-        themeMode: ThemeMode.system,
-        home: BlocSelector<AppUserCubit, AppUserState, bool>(
-          selector: (state) => state is AppUserLoggedIn,
-          builder: (context, isLoggedIn) {
-            if (isLoggedIn) {
-              return const BlogPage();
-            }
-            return const LoginPage();
-          },
-        ));
+      routes: routes,
+      debugShowCheckedModeBanner: false,
+      title: 'Blog App',
+      darkTheme: AppTheme.darkThemeMode,
+      theme: AppTheme.lightThemeMode,
+      themeMode: ThemeMode.system,
+      home: BlocSelector<AppUserCubit, AppUserState, bool>(
+        selector: (state) => state is AppUserLoggedIn,
+        builder: (context, isLoggedIn) {
+          if (isLoggedIn) {
+            return const BlogPage();
+          }
+          return const LoginPage();
+        },
+      ),
+    );
   }
 }

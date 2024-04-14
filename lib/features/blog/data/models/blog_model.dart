@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import '../../domain/entities/blog.dart';
 
 class BlogModel extends Blog {
@@ -34,6 +36,26 @@ class BlogModel extends Blog {
       updatedAt: json['updated_at'] == null
           ? DateTime.now()
           : DateTime.parse(json['updated_at']),
+    );
+  }
+
+  BlogModel copyWith({
+    String? id,
+    String? posterId,
+    String? title,
+    String? content,
+    String? imageUrl,
+    List<String>? topics,
+    DateTime? updatedAt,
+  }) {
+    return BlogModel(
+      id: id ?? this.id,
+      posterId: posterId ?? this.posterId,
+      title: title ?? this.title,
+      content: content ?? this.content,
+      imageUrl: imageUrl ?? this.imageUrl,
+      topics: topics ?? this.topics,
+      updatedAt: updatedAt ?? this.updatedAt,
     );
   }
 }
