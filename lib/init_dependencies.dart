@@ -2,7 +2,6 @@ import 'package:flutter_clean_code/bloc/auth_bloc.dart';
 import 'package:flutter_clean_code/features/auth/domain/repository/auth_repository.dart';
 import 'package:flutter_clean_code/features/auth/domain/usercases/user_sign_up.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:fpdart/fpdart.dart';
 import 'package:get_it/get_it.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
