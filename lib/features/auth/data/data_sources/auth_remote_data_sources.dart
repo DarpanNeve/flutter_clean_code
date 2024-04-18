@@ -3,7 +3,7 @@ import 'package:flutter_clean_code/features/auth/data/models/user_models.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 abstract interface class AuthRemoteDataSource {
-  Future<UserModel> signInWithEmailAndPassword(
+  Future<UserModel> loginWithEmailAndPassword(
       {required String email, required String password});
 
   Future<UserModel> signUpWithEmailAndPassword(
@@ -17,7 +17,7 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
   AuthRemoteDataSourceImpl({required this.supabaseClient});
 
   @override
-  Future<UserModel> signInWithEmailAndPassword(
+  Future<UserModel> loginWithEmailAndPassword(
       {required String email, required String password}) async {
     final response = await supabaseClient.auth
         .signInWithPassword(email: email, password: password);
@@ -45,7 +45,7 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
       }
       return UserModel.fromJson(response.user!.toJson());
     } catch (e) {
-        throw Exception(e.toString());
+      throw Exception(e.toString());
     }
   }
 }
