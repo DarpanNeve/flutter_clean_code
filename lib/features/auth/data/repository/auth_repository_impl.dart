@@ -11,25 +11,51 @@ class AuthRepositoryImpl implements AuthRepository {
   AuthRepositoryImpl({required this.authRemoteDataSource});
 
   @override
-  Future<Either<Failure, User>> signInWithEmailAndPassword(
-      {required String email, required String password}) {
-    // TODO: implement signInWithEmailAndPassword
-    throw UnimplementedError();
+  Future<Either<Failure, User>> currentUser() async {
+    try {
+      final user = await authRemoteDataSource.getCurrentUserData();
+      if (user == null) {
+        print("User not Logged in");
+        return left(Failure("User not Logged in"));
+      }
+      return right(user);
+    } on ServerException catch (e) {
+      return left(Failure(e.message));
+    }
   }
 
   @override
-  Future<Either<Failure, User>> signUpWithEmailAndPassword(
-      {required String email,
-      required String password,
-      required String name}) async {
+  Future<Either<Failure, User>> loginWithEmailAndPassword(
+      {required String email, required String password}) async {
+    return _getUser(
+      () async => await authRemoteDataSource.loginWithEmailAndPassword(
+        email: email,
+        password: password,
+      ),
+    );
+  }
+
+  @override
+  Future<Either<Failure, User>> signUpWithEmailAndPassword({
+    required String email,
+    required String password,
+    required String name,
+  }) async {
+    return _getUser(
+      () async => await authRemoteDataSource.signUpWithEmailAndPassword(
+        email: email,
+        password: password,
+        name: name,
+      ),
+    );
+  }
+
+  Future<Either<Failure, User>> _getUser(Future<User> Function() fn) async {
     try {
-      final result = await authRemoteDataSource.signUpWithEmailAndPassword(
-          email: email, password: password, name: name);
+      final result = await fn();
       return Right(result);
     } on ServerException catch (e) {
       return Left(Failure(e.message));
     }
-    // TODO: implement signUpWithEmailAndPassword
-    throw UnimplementedError();
   }
 }

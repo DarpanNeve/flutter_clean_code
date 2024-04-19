@@ -4,8 +4,8 @@ import 'package:flutter_clean_code/core/util/show_snackbar.dart';
 import 'package:flutter_clean_code/features/auth/presentation/widgets/auth_gradient_button.dart';
 import 'package:flutter_clean_code/features/auth/presentation/widgets/auth_field.dart';
 
-import '../../../../bloc/auth_bloc.dart';
 import '../../../../core/common/widget.dart';
+import '../../bloc/auth_bloc.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});

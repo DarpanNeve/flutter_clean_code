@@ -5,5 +5,5 @@ class Failure {
       [this.message = 'An unexpected error occurred. Please try again later.']);
 
   @override
-  String toString() => message;
+  String toString() => "Server Exception: ${message.toString()}";
 }

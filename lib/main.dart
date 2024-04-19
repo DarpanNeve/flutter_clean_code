@@ -3,9 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_clean_code/core/routes.dart';
 import 'package:flutter_clean_code/init_dependencies.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-
-import 'bloc/auth_bloc.dart';
 import 'core/theme/theme.dart';
+import 'features/auth/bloc/auth_bloc.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,8 +21,20 @@ void main() async {
   ));
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    context.read<AuthBloc>().add(UserLoggedIn());
+  }
 
   // This widget is the root of your application.
   @override
