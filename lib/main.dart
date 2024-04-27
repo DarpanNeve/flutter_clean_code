@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_clean_code/core/common/cubits/app_user/app_user_cubit.dart';
 import 'package:flutter_clean_code/core/routes.dart';
 import 'package:flutter_clean_code/features/auth/presentation/pages/login_page.dart';
+import 'package:flutter_clean_code/features/blog/presentation/bloc/blog_bloc.dart';
 import 'package:flutter_clean_code/features/blog/presentation/pages/blog_page.dart';
 import 'package:flutter_clean_code/init_dependencies.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -21,6 +22,9 @@ void main() async {
       ),
       BlocProvider(
         create: (context) => serviceLocator<AuthBloc>(),
+      ),
+      BlocProvider(
+        create: (context) => serviceLocator<BlogBloc>(),
       ),
     ],
     child: const MyApp(),

@@ -22,6 +22,12 @@ class BlogEditor extends StatelessWidget {
         ),
         contentPadding: const EdgeInsets.all(15),
       ),
+      validator: (value) {
+        if (value!.trim().isEmpty) {
+          return 'This field is required';
+        }
+        return null;
+      },
     );
   }
 }
