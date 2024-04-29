@@ -77,7 +77,7 @@ class _AddBlogPageState extends State<AddBlogPage> {
             ScaffoldMessenger.of(context)
                 .showSnackBar(SnackBar(content: Text(state.error)));
           }
-          if (state is BlogSuccess) {
+          if (state is BlogUploadSuccess) {
             Navigator.pop(context);
           }
           // TODO: implement listener
